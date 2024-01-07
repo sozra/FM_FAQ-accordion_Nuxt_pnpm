@@ -3,7 +3,7 @@
     <!-- <NuxtWelcome /> -->
 
     <article v-for="(item, index) in faqList" :key="index">
-      <header>
+      <header class="accordion-header expanded">
         <h2>{{ item.question }}</h2>
         <button></button>
       </header>
@@ -60,5 +60,91 @@ header {
   border: 1px solid black;
   padding: 1rem;
 
+
+  // h2 {
+  //   color: red;
+  // }
 }
+
+.attribution {
+  a {
+    background-color: red;
+  }
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding: 1rem;
+
+  button {
+    // background-color: lightblue;
+    background-color: transparent;
+    border-radius: 30%;
+    border: none;
+    font-size: 2.5rem;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      content: "+";
+    }
+
+    // &:not(.expanded)::before {
+    //   content: "+";
+    // }
+    // &.expanded::before {
+    //   content: "-";
+    // }
+    &:focus,
+    &:active {
+      outline: rgb(from color r g b);
+    }
+
+    &:hover {
+      // background-color: lightblue;
+      scale: 1.2;
+      transform-origin: center;
+    }
+  }
+
+  // button+p {
+  //     max-width: 0;
+  //     overflow: hidden;
+  //     transition: all 0.3s ease-in-out;
+  //     }
+  //   button.expanded+p {
+  //     max-width: 100%;
+  //   }
+
+
+
+  &.expanded {
+    button {
+      // background-color: lightblue;
+      scale: 1.2;
+      transform-origin: center;
+
+      &::before {
+        content: "-";
+      }
+    }
+
+    &+p {
+      max-height: 100%;
+    }
+  }
+}
+
+
+p {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+//   .anwser  {
+//     overflow: hidden;
+//   }
 </style>
